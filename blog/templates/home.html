@@ -1,0 +1,17 @@
+
+    <div class="navbar">
+        <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+        <a class="nav-item nav-link" href="{% url 'new' %}">글쓰기</a>
+    </div>
+    <br>
+    <h1>지원이가 만든 글쓰는 페이지야</h1>
+    <br>
+    {% for blog in blogs.all %}
+    <div class="container">
+            <h2>{{ blog.title }}</h2>
+            <p>{{ blog.pub_date }}</p>
+            <p>{{ blog.summary }}<a href="{% url 'detail' blog.id %}">...more</a></p>
+            <p><a href="{% url 'delete' blog.id %}">삭제</a></p>
+            <p><a href="{% url 'edit' blog.id %}">수정</a></p>
+    </div>
+    {% endfor %}
